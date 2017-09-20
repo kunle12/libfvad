@@ -15,6 +15,9 @@
 #include <stdint.h>
 #include <stddef.h>
 
+#if defined(__cplusplus)
+extern "C" {
+#endif
 /*
  * Type for a VAD instance, an opaque object created using fvad_new().
  */
@@ -85,5 +88,8 @@ int fvad_set_sample_rate(Fvad* inst, int sample_rate);
  */
 int fvad_process(Fvad* inst, const int16_t* frame, size_t length);
 
+#if defined(__cplusplus)
+}
+#endif
 
 #endif  // FVAD_H_
