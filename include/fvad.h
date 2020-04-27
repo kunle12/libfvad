@@ -12,12 +12,13 @@
 #ifndef FVAD_H_
 #define FVAD_H_
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include <stdint.h>
 #include <stddef.h>
 
-#if defined(__cplusplus)
-extern "C" {
-#endif
 /*
  * Type for a VAD instance, an opaque object created using fvad_new().
  */
@@ -32,7 +33,7 @@ typedef struct Fvad Fvad;
  *
  * Returns NULL in case of a memory allocation error.
  */
-Fvad *fvad_new();
+Fvad *fvad_new(void);
 
 /*
  * Frees the dynamic memory of a specified VAD instance.
@@ -88,7 +89,7 @@ int fvad_set_sample_rate(Fvad* inst, int sample_rate);
  */
 int fvad_process(Fvad* inst, const int16_t* frame, size_t length);
 
-#if defined(__cplusplus)
+#ifdef __cplusplus
 }
 #endif
 

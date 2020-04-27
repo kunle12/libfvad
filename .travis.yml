@@ -1,13 +1,13 @@
+os: linux
 language: c
-
-sudo: required
-dist: trusty
-
-before_install:
-  - sudo apt-get -qq update
-  - sudo apt-get install libsndfile1-dev
-
+addons:
+  apt:
+    packages:
+    - libsndfile1-dev
+compiler:
+  - gcc
+  - clang
 script:
-  - ./bootstrap
+  - autoreconf -i
   - ./configure
-  - make DISTCHECK_CONFIGURE_FLAGS='--enable-examples' distcheck
+  - make distcheck

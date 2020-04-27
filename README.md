@@ -7,21 +7,28 @@ from the rest of the WebRTC code. There are currently no changes in
 functionality.
 
 ## Building and Installing ##
-libfvad uses autoconf/automake. After cloning the git repository, the
-*configure* script can be generated using `./bootstrap`, afterwards the library
-can be build and installed with the usual `./configure`, `make` and
-`make install`.
+libfvad uses autoconf/automake and can be build and installed with the usual:
+```
+./configure
+make
+sudo make install
+```
 
-An optional example can be enabled enabled by `./configure --enable-examples`.
-This requires libsndfile (http://www.mega-nerd.com/libsndfile/, e.g.
-`apt install libsndfile1-dev`).
-
-Tests can be run with `make check`.
+ - When building from the cloned git repository (instead of a downloaded release),
+   run `autoreconf -i` to create the missing *configure* script (this requires autoconf, libtool and pkg-config; e.g. run `sudo apt install autoconf libtool pkg-config` on Debian/Ubuntu first).
+ - An optional example can be enabled enabled by `./configure --enable-examples`.
+   This requires libsndfile (http://www.mega-nerd.com/libsndfile/, e.g.
+   `apt install libsndfile1-dev`).
 
 ## Usage ##
-The API is documented in the `include/fvad.h` header file.
+The API is documented in the `include/fvad.h` header file. See also
+`examples/fvadwav.h`.
 
-## Origin ##
+## Development notes ##
+Recommended CFLAGS to turn on warnings: `-std=c11 -Wall -Wextra -Wpedantic`.
+Tests can be run with `make check`.
+
+### Origin ###
 This library largely consists of parts of the WebRTC Native Code package, the
 repository of which can be found at
 https://chromium.googlesource.com/external/webrtc:
